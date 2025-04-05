@@ -1,69 +1,73 @@
 import { ethers } from "hardhat";
-import { hashEndpointWithScope } from "@selfxyz/core";
 
 async function main() {
   const [deployer] = await ethers.getSigners();
   console.log("Deploying contracts with the account:", deployer.address);
 
-  // const nonce = await ethers.provider.getTransactionCount(deployer.address);
-  // console.log("Account nonce:", nonce);
-
-  // const futureAddress = ethers.getCreateAddress({
-  //   from: deployer.address,
-  //   nonce: nonce,
-  // });
-  // console.log("Calculated future contract address:", futureAddress);
-
-  const VibeToken = await ethers.getContractFactory("Vibe");
+  // Deploy VibeToken
+  console.log("Deploying VibeToken...");
+  const VibeToken = await ethers.getContractFactory("VibeToken");
   const vibeToken = await VibeToken.deploy();
+  await vibeToken.waitForDeployment();
+  console.log("VibeToken deployed to:", await vibeToken.getAddress());
 
-  const vibe = await vibeToken.getAddress();
+  // Deploy VibeNFT
+  console.log("Deploying VibeNFT...");
+  const VibeNFT = await ethers.getContractFactory("VibeNFT");
+  const vibeNFT = await VibeNFT.deploy();
+  await vibeNFT.waitForDeployment();
+  console.log("VibeNFT deployed to:", await vibeNFT.getAddress());
 
-  const identityVerificationHub = "0x3e2487a250e2A7b56c7ef5307Fb591Cc8C83623D";
-
-  const scope = hashEndpointWithScope(
-    "https://vibe.share.zrok.io/api/verify",
-    "vibe-humanity"
+  // Deploy VibeRewardManager
+  console.log("Deploying VibeRewardManager...");
+  const VibeRewardManager = await ethers.getContractFactory(
+    "VibeRewardManager"
   );
-  const attestationId = 1n;
-
-  const olderThanEnabled = true;
-  const olderThan = 18n;
-  const forbiddenCountriesEnabled = false;
-  const forbiddenCountriesListPacked = [0n, 0n, 0n, 0n] as [
-    bigint,
-    bigint,
-    bigint,
-    bigint
-  ];
-  const ofacEnabled = [false, false, false] as [boolean, boolean, boolean];
-
-  const VibeVerifier = await ethers.getContractFactory("VibeVerifier");
-
-  console.log("Deploying VibeVerifier...");
-  const vibeVerifier = await VibeVerifier.deploy(
-    identityVerificationHub,
-    scope,
-    attestationId,
-    olderThanEnabled,
-    olderThan,
-    forbiddenCountriesEnabled,
-    forbiddenCountriesListPacked,
-    ofacEnabled
+  const vibeRewardManager = await VibeRewardManager.deploy(
+    await vibeToken.getAddress(),
+    await vibeNFT.getAddress()
+  );
+  await vibeRewardManager.waitForDeployment();
+  console.log(
+    "VibeRewardManager deployed to:",
+    await vibeRewardManager.getAddress()
   );
 
-  await vibeVerifier.waitForDeployment();
+  // Set reward manager
+  try {
+    console.log("Setting reward manager...");
+    await vibeToken.setRewardManager(await vibeRewardManager.getAddress());
+    await vibeNFT.setRewardManager(await vibeRewardManager.getAddress());
+    console.log("Reward manager set");
+  } catch (e) {
+    console.log("Reward manager set failed");
+  }
+  // Set initial award token amounts
+  console.log("Setting initial award token amounts...");
+  const awardAmounts = {
+    0: ethers.parseEther("1000"), //TOP_CONTRIBUTOR
+    1: ethers.parseEther("500"), //COMMUNITY_STAR
+    2: ethers.parseEther("2000"), //INNOVATION_AWARD
+    3: ethers.parseEther("750"), //GOVERNANCE_EXPERT
+  };
 
-  const deployedAddress = await vibeVerifier.getAddress();
-  console.log("Vibe deployed to:", vibe);
-  console.log("VibeVerifier deployed to:", deployedAddress);
-  // await vibeToken.mint(deployedAddress, 1_000_000_000_000_000_000_000_000n);
+  for (const [awardType, amount] of Object.entries(awardAmounts)) {
+    await vibeRewardManager.setAwardTokenAmount(awardType, amount);
+    console.log(
+      `Set ${awardType} award amount to ${ethers.formatEther(amount)} VIBE`
+    );
+  }
+
+  console.log("Deployment complete!");
+  console.log({
+    vibeToken: await vibeToken.getAddress(),
+    VibeNFT: await vibeNFT.getAddress(),
+    vibeRewardManager: await vibeRewardManager.getAddress(),
+  });
 
   console.log("To verify on Celoscan:");
   console.log(
-    `npx hardhat verify --network celo ${deployedAddress} ${identityVerificationHub} ${scope} ${attestationId} ${vibe} ${olderThanEnabled} ${olderThan} ${forbiddenCountriesEnabled} "[${forbiddenCountriesListPacked.join(
-      ","
-    )}]" "[${ofacEnabled.join(",")}]"`
+    `npx hardhat verify --network flow ${await vibeRewardManager.getAddress()} ${await vibeToken.getAddress()} ${await vibeNFT.getAddress()}`
   );
 }
 

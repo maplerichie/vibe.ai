@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "build": "npx hardhat compile",
-    "deploy": "npx hardhat run scripts/deployVibe.ts --network celo",
-    "proof": "npx hardhat run scripts/testProof.ts --network celo"
+    "deploy-verifier": "npx hardhat run scripts/deployVibeVerifier.ts --network celo",
+    "deploy-vibe": "npx hardhat run scripts/deployVibe.ts --network flow"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",

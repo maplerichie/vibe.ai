@@ -32,6 +32,11 @@ const config: HardhatUserConfig = {
       url: process.env.CELO_RPC_URL || "https://forno.celo.org",
       accounts: [process.env.CELO_KEY as string],
     },
+    flow: {
+      chainId: 545,
+      url: process.env.FLOW_RPC_URL || "https://testnet.evm.nodes.onflow.org",
+      accounts: [process.env.CELO_KEY as string],
+    },
   },
   sourcify: {
     enabled: true,
@@ -39,6 +44,7 @@ const config: HardhatUserConfig = {
   etherscan: {
     apiKey: {
       celo: process.env.CELOSCAN_API_KEY as string,
+      flow: "empty",
     },
     customChains: [
       {
@@ -47,6 +53,14 @@ const config: HardhatUserConfig = {
         urls: {
           apiURL: "https://api-alfajores.celoscan.io/api",
           browserURL: "https://alfajores.celoscan.io",
+        },
+      },
+      {
+        network: "flow",
+        chainId: 545,
+        urls: {
+          apiURL: "https://evm-testnet.flowscan.io/api",
+          browserURL: "https://evm-testnet.flowscan.io",
         },
       },
     ],
