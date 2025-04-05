@@ -10,11 +10,11 @@ const config: HardhatUserConfig = {
         enabled: true,
         runs: 200,
         details: {
-          yul: true
-        }
+          yul: true,
+        },
       },
       metadata: {
-        bytecodeHash: "none"
+        bytecodeHash: "none",
       },
       viaIR: false,
     },
@@ -23,15 +23,18 @@ const config: HardhatUserConfig = {
     sources: "./contracts",
     tests: "./test",
     cache: "./cache",
-    artifacts: "./artifacts"
+    artifacts: "./artifacts",
   },
   defaultNetwork: "hardhat",
   networks: {
     celo: {
-      chainId: 42220,
+      chainId: 44787,
       url: process.env.CELO_RPC_URL || "https://forno.celo.org",
       accounts: [process.env.CELO_KEY as string],
-    }
+    },
+  },
+  sourcify: {
+    enabled: true,
   },
   etherscan: {
     apiKey: {
@@ -40,13 +43,13 @@ const config: HardhatUserConfig = {
     customChains: [
       {
         network: "celo",
-        chainId: 42220,
+        chainId: 44787,
         urls: {
-          apiURL: "https://api.celoscan.io/api",
-          browserURL: "https://celoscan.io"
-        }
-      }
-    ]
-  }
+          apiURL: "https://api-alfajores.celoscan.io/api",
+          browserURL: "https://alfajores.celoscan.io",
+        },
+      },
+    ],
+  },
 };
 export default config;

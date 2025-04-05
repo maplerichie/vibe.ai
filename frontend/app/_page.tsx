@@ -27,7 +27,7 @@ export default function Home() {
 
   const selfApp = new SelfAppBuilder({
     appName: "Vibe.ai",
-    scope: "Vibe-Humanity",
+    scope: "vibe-humanity",
     endpoint: "https://imfjdprrk93t.share.zrok.io/api/verify",
     endpointType: "staging_https",
     userId: address,

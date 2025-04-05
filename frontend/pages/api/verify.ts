@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getUserIdentifier, SelfBackendVerifier } from "@selfxyz/core";
-// import { ethers } from "ethers";
-// import { abi } from "@/app/content/abi";
+import { ethers } from "ethers";
+import { abi } from "@/app/content/abi";
 
 export default async function handler(
   req: NextApiRequest,
@@ -17,17 +17,21 @@ export default async function handler(
           .json({ message: "Proof and publicSignals are required" });
       }
 
-      console.log("Proof:", proof);
+      //   console.log("Proof:", proof);
       //   console.log("Public signals:", publicSignals);
 
       // Extract user ID from the proof
-      const userId = await getUserIdentifier(publicSignals);
-      console.log("Extracted userId:", userId);
+      //   const userId = await getUserIdentifier(publicSignals);
+      //   console.log("Extracted userId:", userId);
 
+      //   const address = await getUserIdentifier(publicSignals, "hex");
+      //   console.log("Extracted address from verification result:", address);
+
+      /*
       // Uncomment this to use the Self backend verifier for offchain verification instead
       const selfdVerifier = new SelfBackendVerifier(
         // "https://forno.celo.org",
-        "Vibe-Humanity",
+        "vibe-humanity",
         "https://1vl9nne766ha.share.zrok.io/api/verify",
         "hex",
         true // If you want to use mock passport
@@ -53,29 +57,31 @@ export default async function handler(
           details: result.isValidDetails,
         });
       }
-      /*
+        */
 
       // Contract details
-      const contractAddress = "0x881ED38b3ba7EE24eEAD094FA5D6ddD2F56Ba1c0";
-
-      const address = await getUserIdentifier(publicSignals, "hex");
-      console.log("Extracted address from verification result:", address);
+      const contractAddress = "0x37bBa660Fcd1CBa4C3dc740ea33c3428eA3a91F5";
 
       // Connect to Celo network
-      const provider = new ethers.JsonRpcProvider("https://forno.celo.org");
+      const provider = new ethers.JsonRpcProvider(
+        "https://alfajores-forno.celo-testnet.org"
+      );
       const signer = new ethers.Wallet(process.env.PRIVATE_KEY!, provider);
       const contract = new ethers.Contract(contractAddress, abi, signer);
 
       try {
-        const tx = await contract.verifySelfProof({
-          a: proof.a,
-          b: [
-            [proof.b[0][1], proof.b[0][0]],
-            [proof.b[1][1], proof.b[1][0]],
-          ],
-          c: proof.c,
-          pubSignals: publicSignals,
-        });
+        const tx = await contract.verifySelfProof(
+          {
+            a: proof.a,
+            b: [
+              [proof.b[0][1], proof.b[0][0]],
+              [proof.b[1][1], proof.b[1][0]],
+            ],
+            c: proof.c,
+            pubSignals: publicSignals,
+          },
+          { gasLimit: 3000000 }
+        );
         await tx.wait();
         console.log("Successfully called verifySelfProof function");
         res.status(200).json({
@@ -93,8 +99,6 @@ export default async function handler(
         });
         throw error;
       }
-        
-      */
     } catch (error) {
       console.error("Error verifying proof:", error);
       return res.status(500).json({

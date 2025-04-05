@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import SelfQRcodeWrapper, { SelfAppBuilder, SelfApp } from "@selfxyz/qrcode";
+import { logo } from "@/app/content/logo";
 
 interface UserProfile {
   name: string;
@@ -18,7 +19,7 @@ interface UserProfile {
 export default function ProfilePage() {
   const user = useUser();
   const [address, setAddress] = useState(
-    "0xDeF1000000000000000000000000000000001234"
+    "0xdeF1000000000000000000000000000000001234"
   );
 
   const [profile, setProfile] = useState<UserProfile>({
@@ -46,16 +47,16 @@ export default function ProfilePage() {
 
   const selfApp = new SelfAppBuilder({
     appName: "Vibe.ai",
-    scope: "Vibe-Humanity",
+    scope: "vibe-humanity",
     endpoint: "https://1vl9nne766ha.share.zrok.io/api/verify",
-    endpointType: "https",
+    // endpointType: "staging_https",
+    logoBase64: logo,
     userId: address,
     userIdType: "hex",
     disclosures: {
-      // minimumAge: 18,
-      // name: true,
+      minimumAge: 18,
     },
-    // devMode: true,
+    devMode: true,
   } as Partial<SelfApp>).build();
 
   const handleSuccess = async () => {
