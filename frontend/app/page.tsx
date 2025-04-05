@@ -35,16 +35,13 @@ export default function LandingPage() {
 
         <div className="container relative z-10 mx-auto px-4 py-24">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-block mb-4 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full text-purple-600 font-medium">
-              🌟 Rewarding Positivity
-            </div>
             <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-600">
-              Vibe.ai
+              Vibe AI
             </h1>
             <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
-              Rewards you for having positive, inspiring, and kind conversations
-              on Discord. Connect your account and start earning tokens for
-              spreading good vibes!
+              An intelligent platform that identifies, analyzes, and rewards
+              meaningful contributions within Web3 communities, creating
+              alignment between value creation and value capture.
             </p>
 
             <div className="flex justify-center mb-12">
@@ -65,10 +62,10 @@ export default function LandingPage() {
       {/* Features section */}
       <div className="container mx-auto px-4 py-16">
         <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">
-          How It Works
+          Key Components
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="p-8 bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 border border-purple-100">
             <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6 mx-auto">
               <svg
@@ -87,11 +84,11 @@ export default function LandingPage() {
               </svg>
             </div>
             <h3 className="text-xl font-semibold mb-3 text-center">
-              Connect Discord
+              Multi-Platform Integration
             </h3>
             <p className="text-gray-600 text-center">
-              Link your Discord account to start tracking your conversations in
-              any server with our bot
+              Seamless deployment across Discord, Telegram, and other community
+              platforms with unified analytics dashboard
             </p>
           </div>
 
@@ -108,15 +105,16 @@ export default function LandingPage() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                  d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
                 />
               </svg>
             </div>
             <h3 className="text-xl font-semibold mb-3 text-center">
-              Earn Tokens
+              AI-Powered Analysis
             </h3>
             <p className="text-gray-600 text-center">
-              Get rewarded daily for positive interactions with VIBE tokens
+              Advanced sentiment analysis and content quality assessment to
+              identify genuine contributions
             </p>
           </div>
 
@@ -133,65 +131,43 @@ export default function LandingPage() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
+                  d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            </div>
+            <h3 className="text-xl font-semibold mb-3 text-center">
+              Dynamic Reward System
+            </h3>
+            <p className="text-gray-600 text-center">
+              Customizable scoring mechanism with tiered rewards including
+              tokens, NFTs, and governance rights
+            </p>
+          </div>
+
+          <div className="p-8 bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 border border-purple-100">
+            <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6 mx-auto">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-8 w-8 text-purple-600"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
                   d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
                 />
               </svg>
             </div>
             <h3 className="text-xl font-semibold mb-3 text-center">
-              Track Progress
+              Community Intelligence
             </h3>
             <p className="text-gray-600 text-center">
-              Monitor your positivity score and rewards in your personal
-              dashboard
+              Automated summarization of high-value discussions and knowledge
+              base creation from quality inputs
             </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Testimonial section */}
-      <div className="bg-white py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">
-            What Users Say
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="p-6 bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl shadow-sm">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-purple-200 rounded-full flex items-center justify-center mr-4">
-                  <span className="text-xl">👩</span>
-                </div>
-                <div>
-                  <h4 className="font-semibold">Sarah M.</h4>
-                  <p className="text-sm text-gray-600">
-                    Discord Community Manager
-                  </p>
-                </div>
-              </div>
-              <p className="text-gray-700">
-                "Vibe.ai has transformed our community! Members are more mindful
-                of their language and the positive atmosphere is contagious."
-              </p>
-            </div>
-
-            <div className="p-6 bg-gradient-to-br from-indigo-50 to-pink-50 rounded-xl shadow-sm">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-indigo-200 rounded-full flex items-center justify-center mr-4">
-                  <span className="text-xl">👨</span>
-                </div>
-                <div>
-                  <h4 className="font-semibold">Alex T.</h4>
-                  <p className="text-sm text-gray-600">
-                    Gaming Community Member
-                  </p>
-                </div>
-              </div>
-              <p className="text-gray-700">
-                "I love that I can earn rewards just by being kind! It's a
-                win-win for everyone and makes our gaming sessions more
-                enjoyable."
-              </p>
-            </div>
           </div>
         </div>
       </div>
@@ -200,11 +176,11 @@ export default function LandingPage() {
       <div className="bg-gradient-to-r from-purple-600 to-indigo-600 py-16">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white mb-6">
-            Ready to Spread Positivity?
+            Ready to Transform Your Community?
           </h2>
           <p className="text-xl text-purple-100 mb-8 max-w-2xl mx-auto">
-            Join thousands of users who are already earning rewards for their
-            positive conversations.
+            Join the future of Web3 community engagement with intelligent
+            contribution analysis and rewards.
           </p>
           <Button
             onClick={handleGetStarted}

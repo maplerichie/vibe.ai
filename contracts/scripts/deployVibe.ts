@@ -22,7 +22,7 @@ async function main() {
   const identityVerificationHub = "0x3e2487a250e2A7b56c7ef5307Fb591Cc8C83623D";
 
   const scope = hashEndpointWithScope(
-    "https://1vl9nne766ha.share.zrok.io/api/verify",
+    "https://vibe.share.zrok.io/api/verify",
     "vibe-humanity"
   );
   const attestationId = 1n;
@@ -45,7 +45,6 @@ async function main() {
     identityVerificationHub,
     scope,
     attestationId,
-    vibe,
     olderThanEnabled,
     olderThan,
     forbiddenCountriesEnabled,
@@ -58,7 +57,7 @@ async function main() {
   const deployedAddress = await vibeVerifier.getAddress();
   console.log("Vibe deployed to:", vibe);
   console.log("VibeVerifier deployed to:", deployedAddress);
-  await vibeToken.mint(deployedAddress, 1_000_000_000_000_000_000_000_000n);
+  // await vibeToken.mint(deployedAddress, 1_000_000_000_000_000_000_000_000n);
 
   console.log("To verify on Celoscan:");
   console.log(

@@ -32,7 +32,7 @@ export default async function handler(
       const selfdVerifier = new SelfBackendVerifier(
         // "https://forno.celo.org",
         "vibe-humanity",
-        "https://1vl9nne766ha.share.zrok.io/api/verify",
+        "https://vibe.share.zrok.io/api/verify",
         "hex",
         true // If you want to use mock passport
       );
@@ -60,7 +60,7 @@ export default async function handler(
         */
 
       // Contract details
-      const contractAddress = "0x37bBa660Fcd1CBa4C3dc740ea33c3428eA3a91F5";
+      const contractAddress = "0x0fF1938059bAfD86c90aCa051aD8004C8dC9b81A";
 
       // Connect to Celo network
       const provider = new ethers.JsonRpcProvider(

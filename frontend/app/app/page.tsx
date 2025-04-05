@@ -4,11 +4,12 @@ import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
-interface ScoreHistory {
+interface ContributionHistory {
   date: string;
   score: number;
   tokens: number;
   status: "completed" | "processing" | "pending";
+  type: "technical" | "community" | "governance";
 }
 
 export default function HomePage() {
@@ -16,31 +17,36 @@ export default function HomePage() {
   const signerStatus = useSignerStatus();
   const { logout } = useLogout();
 
-  const [scoreHistory, setScoreHistory] = useState<ScoreHistory[]>([
+  const [contributionHistory, setContributionHistory] = useState<
+    ContributionHistory[]
+  >([
     {
       date: "Apr 5, 2024",
       score: 85,
       tokens: 25,
       status: "completed",
+      type: "technical",
     },
     {
       date: "Apr 4, 2024",
       score: 78,
       tokens: 20,
       status: "completed",
+      type: "community",
     },
     {
       date: "Apr 3, 2024",
       score: 92,
       tokens: 30,
       status: "completed",
+      type: "governance",
     },
   ]);
 
   const [processingStatus, setProcessingStatus] = useState({
     isProcessing: true,
     progress: 0,
-    message: "Collecting conversation data...",
+    message: "Analyzing community contributions...",
     timeRemaining: "~2 hours",
   });
 
@@ -56,7 +62,7 @@ export default function HomePage() {
             ...prev,
             isProcessing: false,
             progress: 100,
-            message: "Processing complete!",
+            message: "Analysis complete!",
             timeRemaining: "0 minutes",
           };
         }
@@ -67,13 +73,13 @@ export default function HomePage() {
         // Update message based on progress
         let message = prev.message;
         if (newProgress < 30) {
-          message = "Collecting conversation data...";
+          message = "Collecting community data...";
         } else if (newProgress < 60) {
-          message = "Analyzing sentiment and tone...";
+          message = "Analyzing contribution quality...";
         } else if (newProgress < 90) {
-          message = "Calculating positivity scores...";
+          message = "Evaluating impact and value...";
         } else {
-          message = "Finalizing rewards...";
+          message = "Calculating rewards...";
         }
 
         // Update time remaining
@@ -107,7 +113,7 @@ export default function HomePage() {
           Welcome back, John! 👋
         </h1>
         <p className="text-gray-600 mt-2">
-          Your positivity dashboard for today
+          Your Web3 community contribution dashboard
         </p>
       </div>
 
@@ -139,7 +145,7 @@ export default function HomePage() {
               <span className="text-2xl">🏆</span>
             </div>
             <div>
-              <p className="font-medium text-gray-900">75 Tokens</p>
+              <p className="font-medium text-gray-900">75 VIBE Tokens</p>
               <p className="text-sm text-gray-600">Earned this month</p>
             </div>
           </div>
@@ -147,7 +153,7 @@ export default function HomePage() {
 
         <Card className="p-6 bg-gradient-to-br from-white to-green-50 border-green-100 shadow-md">
           <h2 className="text-lg font-semibold text-gray-900 mb-2">
-            Today's Score
+            Contribution Score
           </h2>
           <div className="flex items-center">
             <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center text-white shadow-md mr-4">
@@ -164,7 +170,7 @@ export default function HomePage() {
       {/* Processing Animation Section */}
       <Card className="p-6 mb-8 bg-gradient-to-br from-white to-blue-50 border-blue-100 shadow-md">
         <h2 className="text-lg font-semibold text-gray-900 mb-4">
-          Today's Conversation Analysis
+          Today's Contribution Analysis
         </h2>
 
         <div className="bg-white p-6 rounded-lg border border-gray-100 shadow-sm">
@@ -212,7 +218,9 @@ export default function HomePage() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-gray-900">Messages</p>
+                  <p className="text-sm font-medium text-gray-900">
+                    Contributions
+                  </p>
                   <p className="text-xs text-gray-600">Processing 127 today</p>
                 </div>
               </div>
@@ -238,9 +246,9 @@ export default function HomePage() {
                 </div>
                 <div>
                   <p className="text-sm font-medium text-gray-900">
-                    Positivity
+                    Quality Score
                   </p>
-                  <p className="text-xs text-gray-600">Analyzing tone</p>
+                  <p className="text-xs text-gray-600">Evaluating impact</p>
                 </div>
               </div>
             </div>
@@ -259,7 +267,7 @@ export default function HomePage() {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth={2}
-                      d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      d="M13 10V3L4 14h7v7l9-11h-7z"
                     />
                   </svg>
                 </div>
@@ -273,212 +281,38 @@ export default function HomePage() {
         </div>
       </Card>
 
-      <Card className="p-6 mb-8 shadow-md">
+      {/* Contribution History */}
+      <Card className="p-6 bg-gradient-to-br from-white to-purple-50 border-purple-100 shadow-md">
         <h2 className="text-lg font-semibold text-gray-900 mb-4">
-          Score History
+          Contribution History
         </h2>
-        <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
-              <tr>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  Date
-                </th>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  Score
-                </th>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  Tokens
-                </th>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  Status
-                </th>
-              </tr>
-            </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
-              {scoreHistory.map((entry, index) => (
-                <tr key={index}>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                    {entry.date}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                    {entry.score}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                    {entry.tokens}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <span
-                      className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                        entry.status === "completed"
-                          ? "bg-green-100 text-green-800"
-                          : entry.status === "processing"
-                          ? "bg-blue-100 text-blue-800"
-                          : "bg-yellow-100 text-yellow-800"
-                      }`}
-                    >
-                      {entry.status === "completed"
-                        ? "Completed"
-                        : entry.status === "processing"
-                        ? "Processing"
-                        : "Pending"}
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="space-y-4">
+          {contributionHistory.map((entry, index) => (
+            <div
+              key={index}
+              className="bg-white p-4 rounded-lg border border-gray-100 shadow-sm"
+            >
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="font-medium text-gray-900">{entry.date}</p>
+                  <p className="text-sm text-gray-600">
+                    {entry.type.charAt(0).toUpperCase() + entry.type.slice(1)}{" "}
+                    Contribution
+                  </p>
+                </div>
+                <div className="text-right">
+                  <p className="font-medium text-gray-900">
+                    Score: {entry.score}
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    {entry.tokens} VIBE Tokens
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </Card>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        <Card className="p-6 shadow-md">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">
-            Tips to Improve Your Score
-          </h2>
-          <ul className="space-y-3">
-            <li className="flex items-start">
-              <span className="flex-shrink-0 h-6 w-6 rounded-full bg-green-100 flex items-center justify-center text-green-600 mr-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-              </span>
-              <span className="text-gray-700">
-                Use positive language and avoid negative words
-              </span>
-            </li>
-            <li className="flex items-start">
-              <span className="flex-shrink-0 h-6 w-6 rounded-full bg-green-100 flex items-center justify-center text-green-600 mr-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-              </span>
-              <span className="text-gray-700">
-                Show empathy and understanding in conversations
-              </span>
-            </li>
-            <li className="flex items-start">
-              <span className="flex-shrink-0 h-6 w-6 rounded-full bg-green-100 flex items-center justify-center text-green-600 mr-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-              </span>
-              <span className="text-gray-700">
-                Help others and share knowledge
-              </span>
-            </li>
-            <li className="flex items-start">
-              <span className="flex-shrink-0 h-6 w-6 rounded-full bg-green-100 flex items-center justify-center text-green-600 mr-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-              </span>
-              <span className="text-gray-700">
-                Be respectful and considerate of others' opinions
-              </span>
-            </li>
-          </ul>
-        </Card>
-
-        <Card className="p-6 shadow-md">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">
-            Recent Achievements
-          </h2>
-          <div className="space-y-4">
-            <div className="flex items-center p-3 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-lg">
-              <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mr-3">
-                <span className="text-purple-600 text-lg">🌟</span>
-              </div>
-              <div>
-                <p className="font-medium text-gray-900">Positivity Champion</p>
-                <p className="text-sm text-gray-600">
-                  Maintained a score above 80 for 7 days
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center p-3 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-lg">
-              <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
-                <span className="text-blue-600 text-lg">💬</span>
-              </div>
-              <div>
-                <p className="font-medium text-gray-900">
-                  Conversation Starter
-                </p>
-                <p className="text-sm text-gray-600">
-                  Initiated 50 positive conversations
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center p-3 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg">
-              <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-3">
-                <span className="text-green-600 text-lg">🎯</span>
-              </div>
-              <div>
-                <p className="font-medium text-gray-900">Consistency Master</p>
-                <p className="text-sm text-gray-600">
-                  Logged in for 30 consecutive days
-                </p>
-              </div>
-            </div>
-          </div>
-        </Card>
-      </div>
     </div>
   );
 }
