@@ -20,13 +20,17 @@ export default async function handler(
       console.log("Proof:", proof);
       //   console.log("Public signals:", publicSignals);
 
+      // Extract user ID from the proof
+      const userId = await getUserIdentifier(publicSignals);
+      console.log("Extracted userId:", userId);
+
       // Uncomment this to use the Self backend verifier for offchain verification instead
       const selfdVerifier = new SelfBackendVerifier(
         // "https://forno.celo.org",
         "Vibe-Humanity",
         "https://1vl9nne766ha.share.zrok.io/api/verify",
-        "hex"
-        // true // If you want to use mock passport
+        "hex",
+        true // If you want to use mock passport
       );
       selfdVerifier.setMinimumAge(18);
       selfdVerifier.excludeCountries("USA");

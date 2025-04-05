@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import SelfQRcodeWrapper, { SelfApp, SelfAppBuilder } from "@selfxyz/qrcode";
+import SelfQRcodeWrapper, { SelfAppBuilder, SelfApp } from "@selfxyz/qrcode";
 
 interface UserProfile {
   name: string;
@@ -18,8 +18,9 @@ interface UserProfile {
 export default function ProfilePage() {
   const user = useUser();
   const [address, setAddress] = useState(
-    "0x0000000000000000000000000000000000000000"
+    "0xDeF1000000000000000000000000000000001234"
   );
+
   const [profile, setProfile] = useState<UserProfile>({
     name: "John Doe",
     username: "johndoe",
@@ -51,9 +52,8 @@ export default function ProfilePage() {
     userId: address,
     userIdType: "hex",
     disclosures: {
-      date_of_birth: true,
-      name: true,
-      expiry_date: true,
+      // minimumAge: 18,
+      // name: true,
     },
     // devMode: true,
   } as Partial<SelfApp>).build();
