@@ -1,57 +1,74 @@
 # Vibe AI
 
-Vibe AI is an intelligent platform that identifies, analyzes, and rewards meaningful contributions within Web3 communities, addressing the fundamental misalignment between value creation and value capture in current community engagement models.
+An AI-powered platform that identifies, analyzes, and rewards authentic community contributors in Web3 projects, transforming engagement metrics into meaningful value recognition.
 
 ## Overview
 
-Vibe AI leverages advanced AI technology to create a more equitable and engaging community ecosystem by:
+Vibe AI solves the critical problem of misaligned incentives in Web3 communities by distinguishing genuine value creators from airdrop farmers and rewarding them accordingly. Our platform deploys intelligent bots across community platforms to monitor interactions, evaluate contribution quality, and distribute rewards transparently.
 
-- Identifying genuine value creation
-- Rewarding meaningful contributions
-- Fostering authentic community engagement
-- Building sustainable community knowledge bases
+## Integrations
 
-## Key Components
+### Self & Celo
 
-### Multi-Platform Integration
+- Verify digital identity seamlessly and securely
+- Sybil-resistance, rewarding the real human
 
-- Seamless deployment across Discord, Telegram, and other community platforms
-- Unified analytics dashboard for project owners
-- Cross-platform contribution tracking and analytics
+### Alchemy Smart Wallet Integration
 
-### AI-Powered Contribution Analysis
+- Connects to user wallets for automated reward distribution
+- Supports multiple chains (Ethereum, Solana, etc.)
 
-- Sentiment analysis to distinguish positive, constructive engagement
-- Content quality assessment that evaluates substance over volume
-- Pattern recognition to identify consistent, authentic participation versus farming behavior
-- Contextual understanding of technical discussions and helpful responses
+### Flow & Eliza
 
-### Dynamic Reward System
+- Manages token transfers based on contribution metrics
+- Enables NFT rewards for exceptional contributors
 
-- Customizable scoring mechanism based on project-specific priorities
-- Tiered rewards structure (tokens, NFTs, governance rights, access privileges)
-- Transparent contribution tracking visible to community members
-- Automated reward distribution based on contribution quality
+### Discord & Telegram Bot (TBD)
 
-### Community Intelligence Layer
+- Custom bot that monitors server conversations in real-time
+- Analyzes message quality, helpfulness, and context
+- Maintains server roles based on contribution scores
 
-- Automated summarization of high-value discussions
-- Knowledge base creation from quality community inputs
-- Trend identification and emerging topic alerts
-- Community insights and analytics dashboard
+### Analytics Dashboard (TBD)
 
-## Getting Started
+- Aggregates cross-platform contribution data
+- Visualizes community engagement metrics
+- Provides actionable insights for project teams
+- Customizable reporting for different stakeholder needs
 
-[Coming Soon]
+## How It Works
 
-## Documentation
+1. **Deploy** Vibe AI across your community platforms
+2. **Customize** scoring parameters to match your project values
+3. **Monitor** as AI analyzes community interactions
+4. **Review** insights and contribution rankings
+5. **Distribute** rewards automatically or manually
 
-[Coming Soon]
+## Features
 
-## Contributing
+- **Intelligent Contribution Analysis**: Evaluates the quality, not just quantity of interactions
+- **Anti-Gaming Mechanisms**: Sophisticated detection of farming behaviors
+- **Community Intelligence**: Automated summarization of valuable discussions
+- **Customizable Reward System**: Flexible token distribution based on project needs
+- **Cross-Platform Analytics**: Unified view of community engagement
 
-[Coming Soon]
+## Team
+
+### Core Team
+
+- **Jane Doe** - Core contributor
+
+  - [Twitter: @janedoe](https://twitter.com/janedoe)
+
+- **John Smith** - Core contributor
+
+  - [Twitter: @johnsmith](https://twitter.com/johnsmith)
+
+- **Website**: [vibe.ai](https://vibe.ai)
+- **Twitter**: [@vibeai](https://twitter.com/vibeai)
+- **Discord**: [discord.gg/vibeai](https://discord.gg/vibeai)
+- **Email**: hello@vibe.ai
 
 ## License
 
-[Coming Soon]
+MIT

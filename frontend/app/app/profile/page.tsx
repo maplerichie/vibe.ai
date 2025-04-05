@@ -89,8 +89,8 @@ export default function ProfilePage() {
   } as Partial<SelfApp>).build();
 
   const handleSuccess = async () => {
-    console.log("Verification successful");
     setProfile((prev) => ({ ...prev, verified: true }));
+    setShowVerificationModal(true);
   };
 
   return (
@@ -247,10 +247,6 @@ export default function ProfilePage() {
           </Card>
 
           <Card className="p-6 mt-6 shadow-md">
-            <h2 className="text-xl font-semibold mb-6 text-gray-900">
-              Platform Connections
-            </h2>
-
             <div className="space-y-4">
               {/* Discord Connection */}
               <div className="bg-gradient-to-br from-indigo-50 to-purple-50 p-6 rounded-lg border border-indigo-100">
@@ -297,25 +293,6 @@ export default function ProfilePage() {
                   </div>
                 ) : (
                   <div className="text-center">
-                    <div className="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-8 w-8 text-indigo-600"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"
-                        />
-                      </svg>
-                    </div>
-                    <h3 className="text-lg font-medium text-gray-900 mb-2">
-                      Connect Discord
-                    </h3>
                     <p className="text-gray-600 mb-4">
                       Link your Discord account to track contributions and earn
                       rewards
@@ -375,25 +352,6 @@ export default function ProfilePage() {
                   </div>
                 ) : (
                   <div className="text-center">
-                    <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-8 w-8 text-blue-600"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
-                        />
-                      </svg>
-                    </div>
-                    <h3 className="text-lg font-medium text-gray-900 mb-2">
-                      Connect Telegram
-                    </h3>
                     <p className="text-gray-600 mb-4">
                       Link your Telegram account to track contributions and earn
                       rewards
@@ -411,6 +369,88 @@ export default function ProfilePage() {
           </Card>
         </div>
       </div>
+
+      {/* NFT Awards Section */}
+      <Card className="p-6 mt-6 shadow-md">
+        <h2 className="text-xl font-semibold mb-6 text-gray-900">NFT Awards</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {/* Sample NFT Award 1 */}
+          <div className="bg-gradient-to-br from-purple-50 to-indigo-50 p-4 rounded-lg border border-purple-100 shadow-sm hover:shadow-md transition-shadow">
+            <div className="aspect-square bg-gradient-to-br from-purple-400 to-indigo-500 rounded-lg flex items-center justify-center mb-3 overflow-hidden">
+              <div className="w-full h-full flex items-center justify-center">
+                <span className="text-4xl">🏆</span>
+              </div>
+            </div>
+            <h3 className="font-medium text-gray-900">Top Contributor</h3>
+            <p className="text-sm text-gray-600">
+              Earned for 100+ contributions
+            </p>
+            <div className="mt-2 flex items-center">
+              <span className="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">
+                Rare
+              </span>
+              <span className="text-xs text-gray-500 ml-auto">2023</span>
+            </div>
+          </div>
+
+          {/* Sample NFT Award 2 */}
+          <div className="bg-gradient-to-br from-blue-50 to-cyan-50 p-4 rounded-lg border border-blue-100 shadow-sm hover:shadow-md transition-shadow">
+            <div className="aspect-square bg-gradient-to-br from-blue-400 to-cyan-500 rounded-lg flex items-center justify-center mb-3 overflow-hidden">
+              <div className="w-full h-full flex items-center justify-center">
+                <span className="text-4xl">🌟</span>
+              </div>
+            </div>
+            <h3 className="font-medium text-gray-900">Community Star</h3>
+            <p className="text-sm text-gray-600">
+              Earned for community leadership
+            </p>
+            <div className="mt-2 flex items-center">
+              <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">
+                Epic
+              </span>
+              <span className="text-xs text-gray-500 ml-auto">2023</span>
+            </div>
+          </div>
+
+          {/* Sample NFT Award 3 */}
+          <div className="bg-gradient-to-br from-emerald-50 to-teal-50 p-4 rounded-lg border border-emerald-100 shadow-sm hover:shadow-md transition-shadow">
+            <div className="aspect-square bg-gradient-to-br from-emerald-400 to-teal-500 rounded-lg flex items-center justify-center mb-3 overflow-hidden">
+              <div className="w-full h-full flex items-center justify-center">
+                <span className="text-4xl">💡</span>
+              </div>
+            </div>
+            <h3 className="font-medium text-gray-900">Innovation Award</h3>
+            <p className="text-sm text-gray-600">
+              Earned for technical contributions
+            </p>
+            <div className="mt-2 flex items-center">
+              <span className="text-xs bg-emerald-100 text-emerald-800 px-2 py-1 rounded-full">
+                Legendary
+              </span>
+              <span className="text-xs text-gray-500 ml-auto">2023</span>
+            </div>
+          </div>
+
+          {/* Sample NFT Award 4 */}
+          <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-4 rounded-lg border border-amber-100 shadow-sm hover:shadow-md transition-shadow">
+            <div className="aspect-square bg-gradient-to-br from-amber-400 to-orange-500 rounded-lg flex items-center justify-center mb-3 overflow-hidden">
+              <div className="w-full h-full flex items-center justify-center">
+                <span className="text-4xl">🎯</span>
+              </div>
+            </div>
+            <h3 className="font-medium text-gray-900">Governance Expert</h3>
+            <p className="text-sm text-gray-600">
+              Earned for governance participation
+            </p>
+            <div className="mt-2 flex items-center">
+              <span className="text-xs bg-amber-100 text-amber-800 px-2 py-1 rounded-full">
+                Uncommon
+              </span>
+              <span className="text-xs text-gray-500 ml-auto">2023</span>
+            </div>
+          </div>
+        </div>
+      </Card>
 
       <Dialog
         open={showVerificationModal}
