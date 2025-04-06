@@ -60,7 +60,7 @@ export default async function handler(
         */
 
       // Contract details
-      const contractAddress = "0x695e17cBf75b5CB3f63eaBd2420C997c8431af08";
+      const contractAddress = "0x81d0B8E33C75E5EBd048a4200262Afd7eaEb013E";
 
       // Connect to Celo network
       const provider = new ethers.JsonRpcProvider(

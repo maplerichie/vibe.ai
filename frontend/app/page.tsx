@@ -33,7 +33,7 @@ export default function LandingPage() {
           <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
         </div>
 
-        <div className="container relative z-10 mx-auto px-4 py-24">
+        <div className="container relative z-10 mx-auto px-4 pt-12">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-600">
               Vibe AI
@@ -60,7 +60,7 @@ export default function LandingPage() {
       </div>
 
       {/* Features section */}
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-4 py-12">
         <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">
           Key Components
         </h2>
@@ -83,7 +83,7 @@ export default function LandingPage() {
                 />
               </svg>
             </div>
-            <h3 className="text-xl font-semibold mb-3 text-center">
+            <h3 className="text-xl font-semibold mb-3 text-center text-gray-700">
               Multi-Platform Integration
             </h3>
             <p className="text-gray-600 text-center">
@@ -109,7 +109,7 @@ export default function LandingPage() {
                 />
               </svg>
             </div>
-            <h3 className="text-xl font-semibold mb-3 text-center">
+            <h3 className="text-xl font-semibold mb-3 text-center text-gray-700">
               AI-Powered Analysis
             </h3>
             <p className="text-gray-600 text-center">
@@ -135,7 +135,7 @@ export default function LandingPage() {
                 />
               </svg>
             </div>
-            <h3 className="text-xl font-semibold mb-3 text-center">
+            <h3 className="text-xl font-semibold mb-3 text-center text-gray-700">
               Dynamic Reward System
             </h3>
             <p className="text-gray-600 text-center">
@@ -161,7 +161,7 @@ export default function LandingPage() {
                 />
               </svg>
             </div>
-            <h3 className="text-xl font-semibold mb-3 text-center">
+            <h3 className="text-xl font-semibold mb-3 text-center text-gray-700">
               Community Intelligence
             </h3>
             <p className="text-gray-600 text-center">

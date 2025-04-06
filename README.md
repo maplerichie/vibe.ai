@@ -18,7 +18,7 @@ Vibe AI solves the critical problem of misaligned incentives in Web3 communities
 - Connects to user wallets for automated reward distribution
 - Supports multiple chains (Ethereum, Solana, etc.)
 
-### Flow & Eliza
+### Flow
 
 - Manages token transfers based on contribution metrics
 - Enables NFT rewards for exceptional contributors
@@ -29,12 +29,11 @@ Vibe AI solves the critical problem of misaligned incentives in Web3 communities
 - Analyzes message quality, helpfulness, and context
 - Maintains server roles based on contribution scores
 
-### Analytics Dashboard (TBD)
+### AI Analytics (TBD)
 
 - Aggregates cross-platform contribution data
 - Visualizes community engagement metrics
 - Provides actionable insights for project teams
-- Customizable reporting for different stakeholder needs
 
 ## How It Works
 
@@ -56,13 +55,13 @@ Vibe AI solves the critical problem of misaligned incentives in Web3 communities
 
 ### Core Team
 
-- **Jane Doe** - Core contributor
+- **likkee.eth** - Core contributor
 
-  - [Twitter: @janedoe](https://twitter.com/janedoe)
+  - [Twitter: @maplerichie](https://twitter.com/maplerichie)
 
-- **John Smith** - Core contributor
+- **Joanne** - Core contributor
 
-  - [Twitter: @johnsmith](https://twitter.com/johnsmith)
+  - [Twitter: @ljoanne_ry](https://twitter.com/ljoanne_ry)
 
 - **Website**: [vibe.ai](https://vibe.ai)
 - **Twitter**: [@vibeai](https://twitter.com/vibeai)
